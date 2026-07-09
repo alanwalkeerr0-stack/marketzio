@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketzio - Supermarket Online</title>
+  <meta name="description" content="Website supermarket online gratis pakai Cloudflare Pages dan GitHub." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#">
+        <span class="brand-logo" id="brandLogo">M</span>
+        <span>
+          <strong id="storeName">Marketzio</strong>
+          <small id="storeTagline">Fresh Market Online</small>
+        </span>
+      </a>
+
+      <div class="search-box">
+        <input id="searchInput" type="search" placeholder="Cari produk, contoh: apel, susu, snack..." />
+        <button id="clearSearch" aria-label="Bersihkan pencarian">×</button>
+      </div>
+
+      <button class="cart-button" id="openCart">
+        🛒 <span>Cart</span> <b id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="heroSection">
+      <div class="hero-bg-media" id="heroOuterMedia" aria-hidden="true"></div>
+      <div class="hero-text">
+        <span class="eyebrow" id="heroEyebrow">100% Fresh & Natural</span>
+        <h1 id="heroTitle">Belanja kebutuhan harian jadi lebih cepat.</h1>
+        <p id="heroSubtitle">Pilih produk, masukkan ke keranjang, lalu checkout langsung ke WhatsApp admin.</p>
+        <div class="hero-actions">
+          <a href="#products" class="btn primary">Belanja Sekarang</a>
+          <a href="#category" class="btn ghost">Lihat Kategori</a>
+        </div>
+      </div>
+      <div class="hero-card" id="heroCard">
+        <div class="hero-visual" id="heroVisual" aria-hidden="true">🍓🥑🍊🍇🍎</div>
+        <div class="hero-badge" id="heroBadge">SHOP<br />NOW</div>
+      </div>
+    </section>
+
+    <section class="container promo-strip" id="promoStrip"></section>
+
+    <section class="container category-section" id="category">
+      <div class="section-title">
+        <div>
+          <h2>Kategori Produk</h2>
+          <p>Klik kategori untuk menampilkan produk. Kalau kategori banyak, bisa geser kiri kanan.</p>
+        </div>
+      </div>
+      <div class="category-scroll-wrap">
+        <button class="scroll-btn left" id="categoryLeft" aria-label="Geser kategori kiri">‹</button>
+        <div class="category-grid" id="categoryGrid"></div>
+        <button class="scroll-btn right" id="categoryRight" aria-label="Geser kategori kanan">›</button>
+      </div>
+    </section>
+
+    <section class="container" id="products">
+      <div class="section-title">
+        <div>
+          <h2 id="productTitle">Semua Produk</h2>
+          <p id="productInfo">Produk supermarket siap tampil di website.</p>
+        </div>
+        <button class="btn small" id="resetFilter">Reset Filter</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <h3>Produk tidak ditemukan</h3>
+        <p>Coba cari dengan kata lain atau pilih kategori lain.</p>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </main>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Keranjang belanja">
+    <div class="cart-head">
+      <div>
+        <h3>Keranjang</h3>
+        <span id="cartSummary">Belum ada produk</span>
+      </div>
+      <button class="icon-btn" id="closeCart">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Total</span>
+        <strong id="cartTotal">Rp0</strong>
+      </div>
+      <button class="btn primary full" id="checkoutBtn">Checkout WhatsApp</button>
+      <button class="btn danger full" id="clearCart">Kosongkan Cart</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="productModal" hidden>
+    <div class="modal-backdrop" id="closeModalBackdrop"></div>
+    <div class="modal-card">
+      <button class="icon-btn modal-close" id="closeModal">×</button>
+      <img id="modalImage" src="" alt="" />
+      <div class="modal-content">
+        <span id="modalBadge" class="product-badge"></span>
+        <h3 id="modalName"></h3>
+        <p id="modalDesc"></p>
+        <div class="modal-price">
+          <strong id="modalPrice"></strong>
+          <span id="modalOldPrice"></span>
+        </div>
+        <p class="stock" id="modalStock"></p>
+        <button class="btn primary full" id="modalAddBtn">Tambah ke Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Marketzio. Template supermarket static untuk Cloudflare Pages.</p>
+      <p>Made for GitHub + Cloudflare gratis.</p>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

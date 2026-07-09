@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Marketzio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <section class="login-card" id="loginCard">
+      <div class="brand admin-brand">
+        <span class="brand-logo">M</span>
+        <span>
+          <strong>Admin Marketzio</strong>
+          <small>Kelola banner, kategori, dan produk</small>
+        </span>
+      </div>
+      <h1>Login Admin</h1>
+      <p class="muted">Halaman admin tidak tampil di website utama. Akses manual lewat <b>admin.html</b>.</p>
+      <div class="form-grid single">
+        <label>
+          Username
+          <input id="loginUser" type="text" autocomplete="username" placeholder="admin" />
+        </label>
+        <label>
+          Password
+          <input id="loginPass" type="password" autocomplete="current-password" placeholder="marketzio123" />
+        </label>
+      </div>
+      <button class="btn primary full" id="loginBtn">Masuk Admin</button>
+      <p class="hint">Demo login: <b>admin</b> / <b>marketzio123</b></p>
+    </section>
+
+    <section class="admin-app" id="adminApp" hidden>
+      <header class="admin-header">
+        <div>
+          <span class="eyebrow">Dashboard Admin</span>
+          <h1>Management Marketzio</h1>
+          <p>Admin dibuat per menu: Dashboard, toko, banner, kategori, produk, dan export data.</p>
+        </div>
+        <div class="admin-actions">
+          <a class="btn ghost" href="index.html">Lihat Website</a>
+          <button class="btn danger" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <div class="management-layout">
+        <aside class="admin-sidebar" aria-label="Menu admin">
+          <button class="admin-menu-btn active" data-admin-tab="dashboard">📊 Dashboard</button>
+          <button class="admin-menu-btn" data-admin-tab="store">🏪 Toko & Logo</button>
+          <button class="admin-menu-btn" data-admin-tab="banner">🖼️ Banner</button>
+          <button class="admin-menu-btn" data-admin-tab="category">🧩 Kategori</button>
+          <button class="admin-menu-btn" data-admin-tab="product">🛒 Produk</button>
+          <button class="admin-menu-btn" data-admin-tab="product-list">📦 Daftar Produk</button>
+          <button class="admin-menu-btn" data-admin-tab="export">💾 Export</button>
+        </aside>
+
+        <div class="admin-content">
+          <section class="admin-view active" data-admin-view="dashboard">
+            <div class="stats-grid">
+              <article>
+                <span>Total Produk</span>
+                <strong id="statProducts">0</strong>
+              </article>
+              <article>
+                <span>Total Kategori</span>
+                <strong id="statCategories">0</strong>
+              </article>
+              <article>
+                <span>Produk Promo</span>
+                <strong id="statPromo">0</strong>
+              </article>
+            </div>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Ringkasan Management</h2>
+                <p>Pilih menu di kiri supaya setting tidak tergabung dalam satu halaman panjang.</p>
+              </div>
+              <div class="quick-grid">
+                <button class="quick-card" data-admin-tab="store"><b>🏪 Toko & Logo</b><span>Nama toko, tagline, logo, dan nomor WhatsApp.</span></button>
+                <button class="quick-card" data-admin-tab="banner"><b>🖼️ Banner</b><span>2 gambar banner, transparansi, warna, dan font.</span></button>
+                <button class="quick-card" data-admin-tab="category"><b>🧩 Kategori</b><span>Tambah kategori dan icon/foto kategori.</span></button>
+                <button class="quick-card" data-admin-tab="product"><b>🛒 Produk</b><span>Tambah produk, harga, stok, foto, dan label diskon.</span></button>
+              </div>
+            </section>
+          </section>
+
+          <section class="admin-view" data-admin-view="store" hidden>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Setting Toko & Logo</h2>
+                <p>Ubah nama toko, tagline, logo market, nomor WhatsApp checkout, dan info toko.</p>
+              </div>
+
+              <div class="logo-editor-grid">
+                <div class="image-editor compact-image-editor">
+                  <h3>Logo Market</h3>
+                  <div class="image-preview logo-preview" id="storeLogoPreview">M</div>
+                  <label class="upload-box">
+                    Upload Logo Market
+                    <input id="storeLogoFile" type="file" accept="image/*" />
+                  </label>
+                  <p class="hint image-note"><b>Saran logo:</b> 512×512 px atau 256×256 px, format PNG/WebP/SVG, ukuran maksimal 100–200 KB. Logo bentuk kotak akan tampil paling rapi.</p>
+                </div>
+
+                <div class="form-grid two">
+                  <label>
+                    Nama Toko
+                    <input id="storeNameInput" type="text" placeholder="Marketzio" />
+                  </label>
+                  <label>
+                    Tagline
+                    <input id="storeTaglineInput" type="text" placeholder="Fresh Market Online" />
+                  </label>
+                  <label>
+                    Nomor WhatsApp Admin
+                    <input id="storeWaInput" type="text" placeholder="6281234567890" />
+                  </label>
+                  <label>
+                    Teks Info / Ongkir
+                    <input id="storeMinOrderInput" type="text" placeholder="Gratis ongkir area tertentu" />
+                  </label>
+                  <label>
+                    Path / URL Logo
+                    <input id="storeLogoInput" type="text" placeholder="assets/logo.png atau URL gambar" />
+                  </label>
+                  <label>
+                    Teks Logo Kalau Tanpa Gambar
+                    <input id="storeLogoTextInput" type="text" placeholder="M" maxlength="2" />
+                  </label>
+                </div>
+              </div>
+
+              <button class="btn primary" id="saveStoreBtn">Simpan Setting Toko & Banner</button>
+            </section>
+          </section>
+
+          <section class="admin-view" data-admin-view="banner" hidden>
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Setting Banner Utama</h2>
+                <p>Atur gambar luar, gambar dalam, transparansi, terang/gelap, tulisan banner, font, dan warna.</p>
+              </div>
+
+              <div class="banner-assets-grid">
+                <div class="image-editor">
+                  <h3>Gambar Luar Banner</h3>
+                  <div class="image-preview banner-preview wide-banner-preview" id="heroOuterPreview">Background Banner</div>
+                  <label class="upload-box">
+                    Upload Gambar Luar
+                    <input id="heroOuterImageFile" type="file" accept="image/*" />
+                  </label>
+                  <label>
+                    Path / URL Gambar Luar
+                    <input id="heroOuterImageInput" type="text" placeholder="assets/banner-luar.jpg" />
+                  </label>
+                  <label class="toggle-label compact-toggle">
+                    <span>
+                      Tampilkan Gambar Luar
+                      <small>Matikan kalau mau banner polos hijau-putih.</small>
+                    </span>
+                    <input id="heroShowOuterImage" type="checkbox" checked />
+                  </label>
+                  <div class="range-grid">
+                    <label class="range-label">
+                      Transparansi / Kejelasan Gambar Luar <output data-output-for="heroOuterOpacity">45%</output>
+                      <input id="heroOuterOpacity" type="range" min="0" max="100" step="1" value="45" />
+                    </label>
+                    <label class="range-label">
+                      Terang / Gelap Gambar Luar <output data-output-for="heroOuterBrightness">100%</output>
+                      <input id="heroOuterBrightness" type="range" min="40" max="180" step="1" value="100" />
+                    </label>
+                  </div>
+                  <p class="hint image-note"><b>Saran:</b> 1600×700 px atau 1920×800 px, format JPG/WebP/PNG, ukuran file maksimal 500 KB–1 MB.</p>
+                </div>
+
+                <div class="image-editor">
+                  <h3>Gambar Dalam Banner</h3>
+                  <div class="image-preview banner-preview" id="heroInnerPreview">Poster / Icon Banner</div>
+                  <label class="upload-box">
+                    Upload Gambar Dalam
+                    <input id="heroInnerImageFile" type="file" accept="image/*" />
+                  </label>
+                  <label>
+                    Path / URL / Emoji Gambar Dalam
+                    <input id="heroInnerImageInput" type="text" placeholder="assets/banner-dalam.jpg atau 🍓🥑🍊🍇🍎" />
+                  </label>
+                  <label class="toggle-label compact-toggle">
+                    <span>
+                      Tampilkan Gambar Dalam
+                      <small>Matikan kalau hanya ingin banner full background.</small>
+                    </span>
+                    <input id="heroShowInnerImage" type="checkbox" checked />
+                  </label>
+                  <div class="range-grid">
+                    <label class="range-label">
+                      Transparansi / Kejelasan Gambar Dalam <output data-output-for="heroInnerOpacity">100%</output>
+                      <input id="heroInnerOpacity" type="range" min="0" max="100" step="1" value="100" />
+                    </label>
+                    <label class="range-label">
+                      Terang / Gelap Gambar Dalam <output data-output-for="heroInnerBrightness">100%</output>
+                      <input id="heroInnerBrightness" type="range" min="40" max="180" step="1" value="100" />
+                    </label>
+                  </div>
+                  <p class="hint image-note"><b>Saran:</b> 900×1200 px atau 800×1100 px untuk poster vertikal, format JPG/WebP/PNG, ukuran file maksimal 300–800 KB.</p>
+                </div>
+              </div>
+
+              <div class="form-grid two banner-text-form">
+                <label>
+                  Label Kecil Banner
+                  <input id="heroEyebrowInput" type="text" placeholder="100% Fresh & Natural" />
+                </label>
+                <label class="toggle-label compact-toggle">
+                  <span>
+                    Tampilkan Icon Label Kecil
+                    <small>Centang kalau mau icon daun/sayur muncul di depan label.</small>
+                  </span>
+                  <input id="heroShowEyebrowIcon" type="checkbox" />
+                </label>
+                <label>
+                  Badge Banner
+                  <input id="heroBadgeInput" type="text" placeholder="SHOP NOW" />
+                </label>
+                <label class="wide">
+                  Judul Banner
+                  <input id="heroTitleInput" type="text" placeholder="Belanja kebutuhan harian jadi lebih cepat." />
+                </label>
+                <label class="wide">
+                  Deskripsi Banner
+                  <textarea id="heroSubtitleInput" rows="2" placeholder="Pilih produk, masukkan ke keranjang, lalu checkout langsung ke WhatsApp admin."></textarea>
+                </label>
+              </div>
+
+              <div class="panel-subtitle">Ukuran Font & Warna Banner</div>
+              <div class="form-grid four style-form-grid">
+                <label>
+                  Ukuran Judul
+                  <input id="heroTitleFontSize" type="number" min="30" max="86" placeholder="62" />
+                </label>
+                <label>
+                  Warna Judul
+                  <input id="heroTitleColor" type="color" />
+                </label>
+                <label>
+                  Ukuran Deskripsi
+                  <input id="heroSubtitleFontSize" type="number" min="12" max="28" placeholder="17" />
+                </label>
+                <label>
+                  Warna Deskripsi
+                  <input id="heroSubtitleColor" type="color" />
+                </label>
+                <label>
+                  Ukuran Label Kecil
+                  <input id="heroEyebrowFontSize" type="number" min="10" max="20" placeholder="13" />
+                </label>
+                <label>
+                  Warna Label Kecil
+                  <input id="heroEyebrowColor" type="color" />
+                </label>
+                <label>
+                  Warna Kotak Badge
+                  <input id="heroBadgeBgColor" type="color" />
+                </label>
+                <label>
+                  Warna Teks Badge
+                  <input id="heroBadgeTextColor" type="color" />
+                </label>
+              </div>
+
+              <div class="promo-editor">
+                <div class="promo-form-card">
+                  <h3>Promo Box 1</h3>
+                  <input id="promo1Title" type="text" placeholder="Promo Hari Ini" />
+                  <input id="promo1Text" type="text" placeholder="Diskon produk pilihan sampai 30%" />
+                </div>
+                <div class="promo-form-card">
+                  <h3>Promo Box 2</h3>
+                  <input id="promo2Title" type="text" placeholder="Fresh Stock" />
+                  <input id="promo2Text" type="text" placeholder="Update produk bisa dari halaman admin" />
+                </div>
+                <div class="promo-form-card">
+                  <h3>Promo Box 3</h3>
+                  <input id="promo3Title" type="text" placeholder="Checkout WA" />
+                  <input id="promo3Text" type="text" placeholder="Order otomatis dirapikan ke WhatsApp" />
+                </div>
+              </div>
+
+              <button class="btn primary" id="saveBannerBtn" type="button">Simpan Setting Toko & Banner</button>
+            </section>
+          </section>
+
+          <section class="admin-view" data-admin-view="category" hidden>
+            <section class="panel">
+              <div class="panel-head row">
+                <div>
+                  <h2 id="categoryFormTitle">Tambah Kategori</h2>
+                  <p>Setiap kategori bisa pakai emoji, path gambar, URL gambar, atau upload foto/icon.</p>
+                </div>
+                <button class="btn ghost" id="newCategoryBtn">Kategori Baru</button>
+              </div>
+              <div class="category-editor-grid">
+                <div class="category-icon-editor">
+                  <div class="category-icon-preview" id="categoryIconPreview">🛍️</div>
+                  <label class="upload-box">
+                    Upload Icon / Foto Kategori
+                    <input id="categoryIconFile" type="file" accept="image/*" />
+                  </label>
+                </div>
+                <div>
+                  <input id="categoryEditingId" type="hidden" />
+                  <div class="category-form admin-category-form">
+                    <input id="categoryName" type="text" placeholder="Nama kategori, contoh: Sembako" />
+                    <input id="categoryIcon" type="text" placeholder="Emoji / URL / assets/icon.png" />
+                    <button class="btn primary" id="addCategoryBtn">Simpan</button>
+                  </div>
+                  <p class="hint image-note"><b>Saran icon kategori:</b> 256×256 px, format PNG/SVG/WebP, ukuran maksimal 100 KB. Contoh icon: 🍚 atau <b>assets/products/beras.svg</b>. Kalau upload dari admin, icon disimpan sebagai data gambar di browser.</p>
+                </div>
+              </div>
+              <div class="category-order-note">
+                <b>Atur urutan kategori:</b> klik tahan lalu geser kategori, atau pakai tombol ↑ / ↓. Urutan di sini akan sama dengan urutan kategori di halaman market.
+              </div>
+              <div class="admin-list category-sort-list" id="categoryList"></div>
+            </section>
+          </section>
+
+          <section class="admin-view" data-admin-view="product" hidden>
+            <section class="panel">
+              <div class="panel-head row">
+                <div>
+                  <h2 id="formTitle">Tambah Produk</h2>
+                  <p>Isi nama produk, kategori, harga, promo, stok, dan foto item.</p>
+                </div>
+                <button class="btn ghost" id="newProductBtn">Produk Baru</button>
+              </div>
+
+              <div class="product-editor">
+                <div class="image-editor">
+                  <div class="image-preview" id="imagePreview">Foto Produk</div>
+                  <label class="upload-box">
+                    Upload Foto Produk
+                    <input id="productImageFile" type="file" accept="image/*" />
+                  </label>
+                  <label>
+                    Atau Path / URL Foto
+                    <input id="productImage" type="text" placeholder="assets/products/apel.jpg" />
+                  </label>
+                  <p class="hint image-note"><b>Saran foto produk:</b> 800×800 px atau 1000×1000 px, format JPG/WebP/PNG, ukuran maksimal 200–400 KB. Untuk demo, upload foto tersimpan di browser. Untuk live publik, export file lalu upload ke GitHub.</p>
+                </div>
+
+                <div class="form-grid two product-form">
+                  <input id="productId" type="hidden" />
+                  <label>
+                    Nama Produk
+                    <input id="productName" type="text" placeholder="Contoh: Beras Premium 5kg" />
+                  </label>
+                  <label>
+                    Kategori
+                    <select id="productCategory"></select>
+                  </label>
+                  <label>
+                    Harga Jual
+                    <input id="productPrice" type="number" min="0" placeholder="72000" />
+                  </label>
+                  <label>
+                    Harga Lama / Promo Coret
+                    <input id="productOldPrice" type="number" min="0" placeholder="80000" />
+                  </label>
+                  <label class="toggle-label">
+                    <span>
+                      Tampilkan Label Diskon -%
+                      <small>Bisa dimatikan kalau produk tidak mau pakai label orange.</small>
+                    </span>
+                    <input id="productShowDiscount" type="checkbox" checked />
+                  </label>
+                  <label>
+                    Teks Label Diskon Custom
+                    <input id="productDiscountLabel" type="text" placeholder="Kosongkan = otomatis -20%" />
+                  </label>
+                  <label>
+                    Unit
+                    <input id="productUnit" type="text" placeholder="/ kg, / pcs, / pack" />
+                  </label>
+                  <label>
+                    Stok
+                    <input id="productStock" type="number" min="0" placeholder="20" />
+                  </label>
+                  <label>
+                    Badge
+                    <input id="productBadge" type="text" placeholder="Promo, Ready, Best" />
+                  </label>
+                  <label class="wide">
+                    Deskripsi
+                    <textarea id="productDescription" rows="3" placeholder="Deskripsi singkat produk..."></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn primary" id="saveProductBtn">Simpan Produk</button>
+                <button class="btn ghost" id="clearFormBtn">Bersihkan Form</button>
+              </div>
+            </section>
+          </section>
+
+          <section class="admin-view" data-admin-view="product-list" hidden>
+            <section class="panel">
+              <div class="panel-head row">
+                <div>
+                  <h2>Daftar Produk</h2>
+                  <p>Edit atau hapus produk yang sudah dibuat.</p>
+                </div>
+                <input class="table-search" id="adminSearch" type="search" placeholder="Cari produk..." />
+              </div>
+              <div class="product-table" id="productTable"></div>
+            </section>
+          </section>
+
+          <section class="admin-view" data-admin-view="export" hidden>
+            <section class="panel export-panel">
+              <div class="panel-head">
+                <h2>Export / Backup</h2>
+                <p>Simpan hasil admin untuk backup atau upload ulang ke GitHub.</p>
+              </div>
+              <div class="export-actions">
+                <button class="btn primary" id="exportProductsBtn">Download products.js</button>
+                <button class="btn ghost" id="exportJsonBtn">Download Backup JSON</button>
+                <button class="btn danger" id="resetDataBtn">Reset Data Demo</button>
+              </div>
+              <p class="hint">Perubahan admin demo langsung tampil di browser ini. Supaya tampil untuk semua orang di link Cloudflare, download <b>products.js</b>, lalu upload/replace file itu di GitHub.</p>
+            </section>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="products.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
