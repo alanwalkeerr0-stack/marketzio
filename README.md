@@ -91,3 +91,4 @@ Versi ini memperbaiki error di `script.js` yang membuat halaman market tidak mer
 - Cara pakai: klik tahan lalu geser kategori ke atas/bawah, atau gunakan tombol ↑ dan ↓.
 - Urutan kategori di halaman market mengikuti urutan yang tersimpan di admin.
 - Kategori "Semua" tetap tidak bisa dihapus, tetapi bisa dipindah urutannya kalau ingin kategori lain tampil lebih depan.
+Update deploy
