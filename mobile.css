@@ -1,0 +1,413 @@
+/* Mobile polish for Marketzio storefront */
+@media (max-width: 760px) {
+  body {
+    background: #f4fbf7;
+  }
+
+  .container {
+    width: calc(100% - 24px) !important;
+  }
+
+  .topbar {
+    background: rgba(244, 251, 247, 0.96);
+  }
+
+  .nav {
+    min-height: auto !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 10px !important;
+    padding: 10px 0 !important;
+  }
+
+  .brand {
+    min-width: 0;
+    gap: 9px;
+  }
+
+  .brand-logo {
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 14px !important;
+    flex: 0 0 auto;
+  }
+
+  .brand strong {
+    font-size: 16px !important;
+    line-height: 1.05;
+  }
+
+  .brand small {
+    display: block !important;
+    font-size: 10px !important;
+    max-width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cart-button {
+    min-height: 42px !important;
+    padding: 0 12px !important;
+    border-radius: 18px !important;
+    gap: 6px !important;
+  }
+
+  .cart-button span {
+    display: none !important;
+  }
+
+  .cart-button b {
+    min-width: 22px !important;
+    height: 22px !important;
+    font-size: 11px !important;
+  }
+
+  .search-box {
+    grid-column: 1 / -1 !important;
+    order: 3;
+    height: 44px !important;
+    margin: 0 0 4px !important;
+    padding-left: 14px !important;
+  }
+
+  .search-box input {
+    font-size: 13px;
+  }
+
+  main {
+    padding-top: 8px;
+  }
+
+  .hero {
+    margin-top: 10px !important;
+    min-height: auto !important;
+    grid-template-columns: 1fr !important;
+    border-radius: 24px !important;
+  }
+
+  .hero-bg-media::after {
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.76) 55%, rgba(213, 255, 232, 0.58) 100%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.30), transparent 34%) !important;
+  }
+
+  .hero::before,
+  .hero::after {
+    width: 170px !important;
+    height: 170px !important;
+    opacity: 0.55 !important;
+  }
+
+  .hero-text {
+    padding: 28px 20px 10px !important;
+  }
+
+  .eyebrow {
+    font-size: 11px !important;
+    padding: 7px 10px !important;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 9vw, 40px) !important;
+    line-height: 1.03 !important;
+    letter-spacing: -1px !important;
+    margin: 14px 0 10px !important;
+  }
+
+  .hero p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    max-width: 100% !important;
+  }
+
+  .hero-actions {
+    gap: 8px !important;
+    margin-top: 18px !important;
+  }
+
+  .btn {
+    min-height: 40px !important;
+    padding: 0 14px !important;
+    font-size: 13px !important;
+  }
+
+  .hero-card {
+    padding: 8px 20px 28px !important;
+  }
+
+  .hero-visual {
+    width: min(260px, 86%) !important;
+    min-height: 185px !important;
+    border-radius: 30px !important;
+    transform: rotate(-3deg) !important;
+    font-size: 64px !important;
+  }
+
+  .hero-visual.has-image {
+    height: 240px !important;
+  }
+
+  .hero-badge {
+    width: 68px !important;
+    height: 68px !important;
+    right: 22px !important;
+    bottom: 26px !important;
+    border-radius: 18px !important;
+    font-size: 11px !important;
+  }
+
+  .promo-strip {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 14px !important;
+  }
+
+  .promo-strip > div {
+    padding: 14px 16px !important;
+    border-radius: 18px !important;
+  }
+
+  .promo-strip strong {
+    font-size: 14px !important;
+  }
+
+  .promo-strip span {
+    font-size: 12px !important;
+  }
+
+  .category-section,
+  #products {
+    margin-top: 28px !important;
+  }
+
+  .section-title {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  .section-title h2 {
+    font-size: 26px !important;
+  }
+
+  .section-title p {
+    font-size: 13px !important;
+  }
+
+  .category-grid {
+    gap: 8px !important;
+    padding: 4px 38px 8px !important;
+    scrollbar-width: none;
+  }
+
+  .category-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 22px !important;
+  }
+
+  .category-card {
+    flex: 0 0 112px !important;
+    min-height: 92px !important;
+    border-radius: 18px !important;
+    padding: 12px 8px !important;
+  }
+
+  .category-icon {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 20px !important;
+    margin-bottom: 7px !important;
+  }
+
+  .category-card strong {
+    font-size: 12px !important;
+  }
+
+  .category-card small {
+    font-size: 11px !important;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .product-card {
+    border-radius: 18px !important;
+    padding: 9px !important;
+  }
+
+  .product-thumb {
+    height: 124px !important;
+    border-radius: 16px !important;
+  }
+
+  .product-thumb img {
+    width: 82% !important;
+    height: 82% !important;
+  }
+
+  .discount {
+    top: 14px !important;
+    left: 14px !important;
+    font-size: 10px !important;
+    padding: 4px 7px !important;
+  }
+
+  .product-body {
+    padding: 10px 2px 0 !important;
+  }
+
+  .product-badge {
+    font-size: 10px !important;
+    padding: 4px 7px !important;
+  }
+
+  .product-body h3 {
+    font-size: 13px !important;
+    margin: 8px 0 5px !important;
+    line-height: 1.25 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 32px;
+  }
+
+  .product-body p {
+    display: none !important;
+  }
+
+  .price-row {
+    margin: 8px 0 10px !important;
+    gap: 4px !important;
+    display: block !important;
+  }
+
+  .price-row strong {
+    font-size: 15px !important;
+    display: block !important;
+  }
+
+  .price-row small,
+  .price-row span {
+    font-size: 10px !important;
+  }
+
+  .product-actions {
+    gap: 6px !important;
+    grid-template-columns: 1fr 38px !important;
+  }
+
+  .view-btn,
+  .add-btn {
+    min-height: 38px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+  }
+
+  .add-btn {
+    width: 38px !important;
+    font-size: 18px !important;
+  }
+
+  .pagination {
+    margin-top: 18px !important;
+    gap: 6px !important;
+  }
+
+  .page-btn {
+    min-width: 36px !important;
+    height: 36px !important;
+    border-radius: 12px !important;
+  }
+
+  .cart-drawer {
+    width: 100% !important;
+    border-radius: 22px 22px 0 0;
+    top: auto !important;
+    bottom: 0 !important;
+    height: min(86vh, 720px) !important;
+    transform: translateY(104%) !important;
+  }
+
+  .cart-drawer.show {
+    transform: translateY(0) !important;
+  }
+
+  .cart-head,
+  .cart-footer {
+    padding: 16px !important;
+  }
+
+  .cart-head h3 {
+    font-size: 22px !important;
+  }
+
+  .cart-item {
+    grid-template-columns: 54px 1fr auto !important;
+    gap: 10px !important;
+  }
+
+  .cart-item img {
+    width: 54px !important;
+    height: 54px !important;
+    border-radius: 14px !important;
+  }
+
+  .cart-item h4 {
+    font-size: 13px !important;
+  }
+
+  .cart-item p {
+    font-size: 12px !important;
+  }
+
+  .modal {
+    padding: 10px !important;
+    align-items: end !important;
+  }
+
+  .modal-card {
+    border-radius: 24px 24px 0 0 !important;
+    max-height: 92vh !important;
+    overflow: auto !important;
+  }
+
+  .modal-card > img {
+    min-height: 180px !important;
+    max-height: 240px !important;
+    padding: 20px !important;
+  }
+
+  .modal-content {
+    padding: 22px 18px 18px !important;
+  }
+
+  .modal-content h3 {
+    font-size: 26px !important;
+  }
+
+  .footer {
+    margin-top: 34px !important;
+    padding: 20px 0 !important;
+  }
+
+  .footer-inner {
+    text-align: center;
+    justify-content: center !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
